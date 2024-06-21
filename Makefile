@@ -53,3 +53,12 @@ install: ## Install required goland dependencies
 
 start: ## Start project
 	go run ./cmd/cop-orm
+
+init-db: create-postgres create-cop-orm-db ## Initialize the database
+	@sleep 5
+
+create-postgres: ## Create a PostgreSQL instance using Docker
+	docker run --name postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres
+
+create-cop-orm-db: ## Create a cop-orm database
+	docker exec -it postgres createdb -U postgres cop-orm
