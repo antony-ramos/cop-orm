@@ -28,7 +28,7 @@ type (
 	// Postgres -.
 	Postgres struct {
 		Host     string `env:"POSTGRES_HOST"     env-required:"true" yaml:"host"`
-		Port     string `env:"POSTGRES_PORT"     env-required:"true" yaml:"port"`
+		Port     int    `env:"POSTGRES_PORT"     env-required:"true" yaml:"port"`
 		User     string `env:"POSTGRES_USER"     env-required:"true" yaml:"user"`
 		Password string `env:"POSTGRES_PASSWORD" env-required:"true" yaml:"password"`
 		DBName   string `env:"POSTGRES_DB_NAME"  env-required:"true" yaml:"dbname"`

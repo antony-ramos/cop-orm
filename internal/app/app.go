@@ -9,7 +9,7 @@ import (
 
 func Start(cfg *config.Config) {
 	database := database.Gorm{}
-	err := database.Start()
+	err := database.Start(cfg.Postgres)
 	if err != nil {
 		panic(err)
 	}
