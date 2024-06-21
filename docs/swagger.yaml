@@ -1,4 +1,16 @@
 basePath: /api/v1
+definitions:
+  entity.User:
+    properties:
+      email:
+        type: string
+      email_varify:
+        type: boolean
+      name:
+        type: string
+      password:
+        type: string
+    type: object
 info:
   contact: {}
 paths:
@@ -33,7 +45,7 @@ paths:
         name: body
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/entity.User'
       produces:
       - application/json
       responses:

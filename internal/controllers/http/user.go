@@ -12,7 +12,7 @@ import (
 // @Tags User
 // @Accept json
 // @Produce json
-// @Param body body string true "User object"
+// @Param body body entity.User true "User object"
 // @Success 200 {object} map[string]interface{}
 // @Failure 500 {object} map[string]interface{}
 // @Router /users [post]

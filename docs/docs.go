@@ -64,7 +64,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/entity.User"
                         }
                     }
                 ],
@@ -208,6 +208,25 @@ const docTemplate = `{
                             "additionalProperties": true
                         }
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "entity.User": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "email_varify": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
                 }
             }
         }
