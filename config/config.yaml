@@ -1,13 +1,14 @@
----
 app:
-  name: "cop-orm"
-  version: "1.0.0"
+  name: 'cop-orm'
+  version: '1.0.0'
 
 http:
   port: 8080
 
 postgres:
-  host: "localhost"
+  host: 'localhost'
   port: 5432
-  user: "postgres"
-  password: "mysecretpassword"
+  user: 'postgres'
+  dbname: 'cop-orm'
+  password: 'mysecretpassword'
+
