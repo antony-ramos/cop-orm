@@ -16,6 +16,7 @@ type Database interface {
 	DeleteUser(userID string) error
 	ModifyUser(userID string, user entity.User) error
 	GetAllUsers() ([]entity.User, error)
+	CreateGroup(group entity.Group) error
 }
 
 type Gorm struct {
@@ -33,6 +34,7 @@ func (repository *Gorm) Start(cfg config.Postgres) error {
 	}
 
 	repository.db.AutoMigrate(&User{})
+	repository.db.AutoMigrate(&Group{})
 
 	return nil
 }

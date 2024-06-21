@@ -9,13 +9,16 @@ type User struct {
 	Password     string `json:"password"`
 	Email        string `json:"email"`
 	Email_verify bool   `json:"email_varify"`
+	Group        Group
+	GroupID      uint `json:"group_id"`
 }
 
-func NewUser(name, password, email string) *User {
+func NewUser(name, password, email string, group_id uint) *User {
 	return &User{
 		Name:     name,
 		Password: password,
 		Email:    email,
+		GroupID:  group_id,
 	}
 }
 

@@ -92,3 +92,20 @@ func (u *Usecase) GetAllUsers() ([]byte, error) {
 
 	return body, nil
 }
+
+func (u *Usecase) CreateGroup(body []byte) error {
+	group := entity.Group{}
+	err := json.Unmarshal(body, &group)
+	if err != nil {
+		return errors.New("unmarshal body into entity group: " + err.Error())
+	}
+	err = group.Validate()
+	if err != nil {
+		return errors.New("validate entity group: " + err.Error())
+	}
+	err = u.DB.CreateGroup(group)
+	if err != nil {
+		return errors.New("create group: " + err.Error())
+	}
+	return nil
+}

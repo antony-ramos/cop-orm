@@ -16,6 +16,7 @@ type UserUsecase interface {
 	DeleteUser(userID string) error
 	ModifyUser(userID string, body []byte) error
 	GetAllUsers() ([]byte, error)
+	CreateGroup(body []byte) error
 }
 
 func NewHTTPController(uc UserUsecase) *gin.Engine {
