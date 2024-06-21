@@ -13,6 +13,7 @@ type UserUsecase interface {
 	GetUser(userID string) ([]byte, error)
 	DeleteUser(userID string) error
 	ModifyUser(userID string, body []byte) error
+	GetAllUsers() ([]byte, error)
 }
 
 func NewHTTPController(usecase UserUsecase) *gin.Engine {
@@ -38,6 +39,18 @@ func NewHTTPController(usecase UserUsecase) *gin.Engine {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "User created successfully",
 		})
+	})
+
+	r.GET("/api/"+apiVersion+"/users", func(c *gin.Context) {
+		// Call the getAllUsers function from the usecase package
+		users, err := usecase.GetAllUsers()
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": "Failed to get all users",
+			})
+			return
+		}
+		c.JSON(http.StatusOK, users)
 	})
 
 	r.GET("/api/"+apiVersion+"/users/:id", func(c *gin.Context) {

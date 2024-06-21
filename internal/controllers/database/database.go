@@ -4,12 +4,18 @@ import (
 	"fmt"
 
 	"github.com/antony-ramos/cop-orm/config"
+	"github.com/antony-ramos/cop-orm/internal/entity"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
 type Database interface {
 	Start(config.Postgres) error
+	CreateUser(user entity.User) error
+	GetUser(userID string) (entity.User, error)
+	DeleteUser(userID string) error
+	ModifyUser(userID string, user entity.User) error
+	GetAllUsers() ([]entity.User, error)
 }
 
 type Gorm struct {
@@ -25,5 +31,8 @@ func (repository *Gorm) Start(cfg config.Postgres) error {
 	if err != nil {
 		return err
 	}
+
+	repository.db.AutoMigrate(&User{})
+
 	return nil
 }

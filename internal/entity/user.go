@@ -5,9 +5,10 @@ import (
 )
 
 type User struct {
-	Name     string `json:"name"`
-	Password string `json:"password"`
-	Email    string `json:"email"`
+	Name         string `json:"name"`
+	Password     string `json:"password"`
+	Email        string `json:"email"`
+	Email_verify bool   `json:"email_varify"`
 }
 
 func NewUser(name, password, email string) *User {
