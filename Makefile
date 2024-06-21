@@ -20,8 +20,6 @@ artifact: ## Compile app from sources (linux)
 artifact.osx: ## Compile app from sources (osx)
 	@CGO_ENABLED=0 GOARCH=amd64 GOOS=darwin go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o cop-orm ./cmd/cop-orm
 
-image-ci: ## Build an image for CI Test Helm
-	docker build . --tag "ghcr.io/radiofrance/cop-orm:ci"
 
 ##
 ## ----------------------
