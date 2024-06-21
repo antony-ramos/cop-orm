@@ -1,11 +1,13 @@
 package entity
 
-import "errors"
+import (
+	"errors"
+)
 
 type User struct {
-	Name     string
-	Password string
-	Email    string
+	Name     string `json:"name"`
+	Password string `json:"password"`
+	Email    string `json:"email"`
 }
 
 func NewUser(name, password, email string) *User {

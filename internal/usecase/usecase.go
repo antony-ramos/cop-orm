@@ -1,11 +1,15 @@
 package usecase
 
-import "errors"
+import (
+	"errors"
+
+	"github.com/antony-ramos/cop-orm/internal/controllers/database"
+)
 
 type Usecase struct {
 }
 
-func New() *Usecase {
+func New(db database.Database) *Usecase {
 	return &Usecase{}
 }
 
